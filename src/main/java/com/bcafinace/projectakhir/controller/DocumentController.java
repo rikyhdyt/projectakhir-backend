@@ -70,24 +70,65 @@ public class DocumentController {
 
     @PostMapping("/upload")
     public String handleSubmit(
-                               @RequestParam("k1")MultipartFile multipartFile
-//                               @RequestParam("Pengantar")MultipartFile multipartFile2
+                               @RequestParam("k1")MultipartFile multipartFile1,
+                               @RequestParam("pengantar")MultipartFile multipartFile2,
+                               @RequestParam("k2")MultipartFile multipartFile3,
+                               @RequestParam("ktpKonsumen")MultipartFile multipartFile4,
+                               @RequestParam("ktpPengaju")MultipartFile multipartFile5,
+                               @RequestParam("kk")MultipartFile multipartFile6,
+                               @RequestParam("resumeMedis")MultipartFile multipartFile7,
+                               @RequestParam(value = "skPolisi", required = false)MultipartFile multipartFile8,
+                               @RequestParam("sertifikatCP")MultipartFile multipartFile9,
+                               @RequestParam(value = "skTidakKerja", required = false)MultipartFile multipartFile10,
+                               @RequestParam("nmPemohon")String param1,
+                               @RequestParam("email")String param2,
+                               @RequestParam("hp")String param3,
+                               @RequestParam(value = "pesan", required = false)String param4
                                ) throws Exception{
 
         Document document = new Document();
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-//        String suratPengantarFileName = StringUtils.cleanPath(multipartFile2.getOriginalFilename());
 
-        document.setK1(fileName);
-//        document.setPengantar(suratPengantarFileName);
+        String formK1fileName = StringUtils.cleanPath(multipartFile1.getOriginalFilename());
+        String suratPengantarFileName = StringUtils.cleanPath(multipartFile2.getOriginalFilename());
+        String formK2fileName = StringUtils.cleanPath(multipartFile3.getOriginalFilename());
+        String ktpKonsumen = StringUtils.cleanPath(multipartFile4.getOriginalFilename());
+        String ktpPengaju = StringUtils.cleanPath(multipartFile5.getOriginalFilename());
+        String kk = StringUtils.cleanPath(multipartFile6.getOriginalFilename());
+        String resumeMedis = StringUtils.cleanPath(multipartFile7.getOriginalFilename());
+        String skPolisi = StringUtils.cleanPath(multipartFile8.getOriginalFilename());
+        String sertifikatCP = StringUtils.cleanPath(multipartFile9.getOriginalFilename());
+        String skTidakKerja = StringUtils.cleanPath(multipartFile10.getOriginalFilename());
 
-        Document savedDocument = documentRepo.save(document);
+        document.setK1(formK1fileName);
+        document.setPengantar(suratPengantarFileName);
+        document.setK2(formK2fileName);
+        document.setKtpKonsumen(ktpKonsumen);
+        document.setKtpPengaju(ktpPengaju);
+        document.setKk(kk);
+        document.setResumeMedis(resumeMedis);
+        document.setSkPolisi(skPolisi);
+        document.setSertifikatCP(sertifikatCP);
+        document.setSkTidakKerja(skTidakKerja);
+        document.setNmPemohon(param1);
+        document.setEmail(param2);
+        document.setHp(param3);
+        document.setPesan(param4);
+
+        Document savedDocument = documentRepo.save(document); //save to db
         String uploadDir = "uploads/" + savedDocument.getId();
 
-        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-//        FileUploadUtil.saveFile(uploadDir, suratPengantarFileName, multipartFile2);
+        FileUploadUtil.saveFile(uploadDir, formK1fileName, multipartFile1);
+        FileUploadUtil.saveFile(uploadDir, suratPengantarFileName, multipartFile2);
+        FileUploadUtil.saveFile(uploadDir, formK2fileName, multipartFile3);
+        FileUploadUtil.saveFile(uploadDir, ktpKonsumen, multipartFile4);
+        FileUploadUtil.saveFile(uploadDir, ktpPengaju, multipartFile5);
+        FileUploadUtil.saveFile(uploadDir, kk, multipartFile6);
+        FileUploadUtil.saveFile(uploadDir, resumeMedis, multipartFile7);
+        FileUploadUtil.saveFile(uploadDir, skPolisi, multipartFile8);
+        FileUploadUtil.saveFile(uploadDir, sertifikatCP, multipartFile9);
+        FileUploadUtil.saveFile(uploadDir, skTidakKerja, multipartFile10);
 
-        return "message";
+        return "Dokumen berhasil diupload";
     }
 
 }

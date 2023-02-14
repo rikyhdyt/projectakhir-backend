@@ -12,6 +12,7 @@ Version 1.0
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
@@ -25,26 +26,50 @@ public class Document {
     @Column(name = "DocId")
     private Long id;
 
+    @Column(name = "NmPemohon" , nullable = true)
+    private String nmPemohon;
+
+    @Column(name = "Email", nullable = true)
+    private String email;
+
+    @Column(name = "HP", nullable = true)
+    private String hp;
+
+//    @Column(name = "TglKejadian", nullable = true)
+//    private Date tglKejadian;
+
     @Column(name = "FormK1", nullable = true)
     private String k1;
 
-//    @Column(name = "FormK2", nullable = false)
-//    private String k2;
-//
-//    @Column(name = "KTPKonsumen", nullable = false)
-//    private String ktpKonsumen;
-//
-//    @Column(name = "KTPPengaju", nullable = false)
-//    private String ktpPengaju;
-//
-//    @Column(name = "KK", nullable = false)
-//    private String kk;
+    @Column(name = "FormK2", nullable = true)
+    private String k2;
 
-    @Column(name = "Pesan", nullable = true)
-    private String pesan;
+    @Column(name = "KTPKonsumen", nullable = true)
+    private String ktpKonsumen;
+
+    @Column(name = "KTPPengaju", nullable = true)
+    private String ktpPengaju;
+
+    @Column(name = "KK", nullable = true)
+    private String kk;
+
+    @Column(name = "ResumeMedis", nullable = true)
+    private String resumeMedis;
+
+    @Column(name = "SKPolisi", nullable = true)
+    private String skPolisi;
+
+    @Column(name = "SertifikatCP", nullable = true)
+    private String sertifikatCP;
+
+    @Column(name = "SKTidakKerja", nullable = true)
+    private String skTidakKerja;
 
     @Column(name = "SuratPengantar", nullable = true)
     private String pengantar;
+
+    @Column(name = "Pesan", nullable = true)
+    private String pesan;
 
     @Column(name = "IsProgress",nullable = false)
     private String isProgress="1";
@@ -76,37 +101,37 @@ public class Document {
         this.k1 = k1;
     }
 
-//    public String getK2() {
-//        return k2;
-//    }
-//
-//    public void setK2(String k2) {
-//        this.k2 = k2;
-//    }
-//
-//    public String getKtpKonsumen() {
-//        return ktpKonsumen;
-//    }
-//
-//    public void setKtpKonsumen(String ktpKonsumen) {
-//        this.ktpKonsumen = ktpKonsumen;
-//    }
-//
-//    public String getKtpPengaju() {
-//        return ktpPengaju;
-//    }
-//
-//    public void setKtpPengaju(String ktpPengaju) {
-//        this.ktpPengaju = ktpPengaju;
-//    }
-//
-//    public String getKk() {
-//        return kk;
-//    }
-//
-//    public void setKk(String kk) {
-//        this.kk = kk;
-//    }
+    public String getK2() {
+        return k2;
+    }
+
+    public void setK2(String k2) {
+        this.k2 = k2;
+    }
+
+    public String getKtpKonsumen() {
+        return ktpKonsumen;
+    }
+
+    public void setKtpKonsumen(String ktpKonsumen) {
+        this.ktpKonsumen = ktpKonsumen;
+    }
+
+    public String getKtpPengaju() {
+        return ktpPengaju;
+    }
+
+    public void setKtpPengaju(String ktpPengaju) {
+        this.ktpPengaju = ktpPengaju;
+    }
+
+    public String getKk() {
+        return kk;
+    }
+
+    public void setKk(String kk) {
+        this.kk = kk;
+    }
 
     public String getIsProgress() {
         return isProgress;
@@ -124,7 +149,55 @@ public class Document {
         isActive = active;
     }
 
-//    public Maskapai getMaskapai() {
+    public String getResumeMedis() {
+        return resumeMedis;
+    }
+
+    public void setResumeMedis(String resumeMedis) {
+        this.resumeMedis = resumeMedis;
+    }
+
+    public String getSkPolisi() {
+        return skPolisi;
+    }
+
+    public void setSkPolisi(String skPolisi) {
+        this.skPolisi = skPolisi;
+    }
+
+    public String getSertifikatCP() {
+        return sertifikatCP;
+    }
+
+    public void setSertifikatCP(String sertifikatCP) {
+        this.sertifikatCP = sertifikatCP;
+    }
+
+    public String getSkTidakKerja() {
+        return skTidakKerja;
+    }
+
+    public void setSkTidakKerja(String skTidakKerja) {
+        this.skTidakKerja = skTidakKerja;
+    }
+
+    public String getPengantar() {
+        return pengantar;
+    }
+
+    public void setPengantar(String pengantar) {
+        this.pengantar = pengantar;
+    }
+
+    public String getPesan() {
+        return pesan;
+    }
+
+    public void setPesan(String pesan) {
+        this.pesan = pesan;
+    }
+
+    //    public Maskapai getMaskapai() {
 //        return maskapai;
 //    }
 //
