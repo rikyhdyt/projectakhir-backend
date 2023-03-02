@@ -13,7 +13,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 
-@Data
+
 @Entity
 @Table(name = "TbMaskapai")
 
@@ -23,6 +23,9 @@ public class Maskapai {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MasId")
     private Long id;
+
+    @Column(name = "NmMaskapai", nullable = false)
+    private String nmMaskapai;
 
     @Column(name = "MasUsername", nullable = false,unique = true)
     private String username;
@@ -63,5 +66,13 @@ public class Maskapai {
 
     public void setActive(Boolean active) {
         isActive = active;
+    }
+
+    public String getNmMaskapai() {
+        return nmMaskapai;
+    }
+
+    public void setNmMaskapai(String nmMaskapai) {
+        this.nmMaskapai = nmMaskapai;
     }
 }

@@ -25,6 +25,7 @@ public class ConstantMessage {
     public final static String SUCCESS_SAVE = "DATA BERHASIL DIBUAT";
     public final static String SUCCESS_FIND_BY = "OK";
     public final static String WARNING_NOT_FOUND = "DATA TIDAK DITEMUKAN";
+    public final static String WARNING_LOGIN_FAIL = "LOGIN GAGAL";
     public final static String WARNING_DATA_EMPTY = "DATA TIDAK ADA";
 
     public final static String ERROR_DATA_INVALID = "DATA TIDAK VALID";

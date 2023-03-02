@@ -10,12 +10,26 @@ Version 1.0
 
 import com.bcafinace.projectakhir.models.Document;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface DocumentRepo extends JpaRepository<Document, Long> {
 
+    List<Document>findByIsProgress(String isProgress);
+
+    @Query(value = "SELECT * FROM TbDocument WHERE IsProgress = '2' OR IsProgress ='2b' OR IsProgress='1b'", nativeQuery = true)
+    @Modifying
+    List<Document> getProgressForAdmin();
+
+    @Query(value = "SELECT * FROM TbDocument WHERE IsProgress = '3' OR IsProgress ='4' ", nativeQuery = true)
+    @Modifying
+    List<Document> getHistoriForAdmin();
+
     @Override
     Optional<Document> findById(Long id);
+
 
 }

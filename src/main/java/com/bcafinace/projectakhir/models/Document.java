@@ -14,7 +14,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.Date;
 
-@Data
+
 @Entity
 @Table(name = "TbDocument")
 
@@ -25,6 +25,9 @@ public class Document {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "DocId")
     private Long id;
+
+    @Column(name = "NoKlaim", nullable = true)
+    private String noKlaim;
 
     @Column(name = "NmPemohon" , nullable = true)
     private String nmPemohon;
@@ -56,34 +59,41 @@ public class Document {
     @Column(name = "ResumeMedis", nullable = true)
     private String resumeMedis;
 
-    @Column(name = "SKPolisi", nullable = true)
-    private String skPolisi;
-
     @Column(name = "SertifikatCP", nullable = true)
     private String sertifikatCP;
+
+    //optional dokumen
+    @Column(name = "SKPolisi", nullable = true)
+    private String skPolisi;
 
     @Column(name = "SKTidakKerja", nullable = true)
     private String skTidakKerja;
 
+    //yang diupload admin
     @Column(name = "SuratPengantar", nullable = true)
     private String pengantar;
 
+    @Column (name = "LoanLedger", nullable = true)
+    private String loanLedger;
+
+    //optional jika telat lapor
+    @Column (name = "TelatLapor", nullable = true)
+    private String telatLapor;
+
+    //jika ada revisi
     @Column(name = "Pesan", nullable = true)
     private String pesan;
 
+    //default
     @Column(name = "IsProgress",nullable = false)
     private String isProgress="1";
 
     @Column(name = "IsActive",nullable = false)
     private Boolean isActive=true;
 
-//    @ManyToOne
-//    @JoinColumn(name = "MaskapaiId")
-//    private Maskapai maskapai;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "UserId")
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "IdAkun")
+    private Akun akun;
 
     public Long getId() {
         return id;
@@ -197,19 +207,59 @@ public class Document {
         this.pesan = pesan;
     }
 
-    //    public Maskapai getMaskapai() {
-//        return maskapai;
-//    }
-//
-//    public void setMaskapai(Maskapai maskapai) {
-//        this.maskapai = maskapai;
-//    }
-//
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
+    public String getNmPemohon() {
+        return nmPemohon;
+    }
+
+    public void setNmPemohon(String nmPemohon) {
+        this.nmPemohon = nmPemohon;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getHp() {
+        return hp;
+    }
+
+    public void setHp(String hp) {
+        this.hp = hp;
+    }
+
+    public String getLoanLedger() {
+        return loanLedger;
+    }
+
+    public void setLoanLedger(String loanLedger) {
+        this.loanLedger = loanLedger;
+    }
+
+    public String getTelatLapor() {
+        return telatLapor;
+    }
+
+    public void setTelatLapor(String telatLapor) {
+        this.telatLapor = telatLapor;
+    }
+
+    public Akun getAkun() {
+        return akun;
+    }
+
+    public void setAkun(Akun akun) {
+        this.akun = akun;
+    }
+
+    public String getNoKlaim() {
+        return noKlaim;
+    }
+
+    public void setNoKlaim(String noKlaim) {
+        this.noKlaim = noKlaim;
+    }
 }

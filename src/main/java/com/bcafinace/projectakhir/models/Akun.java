@@ -13,7 +13,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.sql.Date;
 
-@Data
+
 @Entity
 @Table(name = "TbAkun")
 
@@ -23,6 +23,9 @@ public class Akun {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "AkunId")
     private Long id;
+
+    @Column(name = "NmKonsumen", nullable = true)
+    private String nmKonsumen;
 
     @Column(name = "NoKontrak", nullable = false, unique = true)
     private String noKontrak;
@@ -45,12 +48,24 @@ public class Akun {
     @Column(name = "IsActive")
     private boolean isActive=true;
 
+    @ManyToOne
+    @JoinColumn(name = "IdMaskapai")
+    private Maskapai maskapai;
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNmKonsumen() {
+        return nmKonsumen;
+    }
+
+    public void setNmKonsumen(String nmKonsumen) {
+        this.nmKonsumen = nmKonsumen;
     }
 
     public String getNoKontrak() {
@@ -99,5 +114,21 @@ public class Akun {
 
     public void setActive(boolean active) {
         isActive = active;
+    }
+
+    public String getNoPolis() {
+        return noPolis;
+    }
+
+    public void setNoPolis(String noPolis) {
+        this.noPolis = noPolis;
+    }
+
+    public Maskapai getMaskapai() {
+        return maskapai;
+    }
+
+    public void setMaskapai(Maskapai maskapai) {
+        this.maskapai = maskapai;
     }
 }

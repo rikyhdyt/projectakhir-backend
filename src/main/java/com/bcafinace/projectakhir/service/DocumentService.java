@@ -29,15 +29,41 @@ public class DocumentService {
         this.documentRepo=documentRepo;
     }
 
+    public Document findById(Long id) throws Exception{
+        return documentRepo.findById(id).
+                orElseThrow(() -> new ResourceNotFoundException(ConstantMessage.WARNING_NOT_FOUND));
+    }
+
     public void updateDocumentFlag(Document d) throws Exception{
         Document document = documentRepo.findById(d.getId()).orElseThrow(()->
                 new ResourceNotFoundException(ConstantMessage.WARNING_NOT_FOUND));
 
         document.setIsProgress(d.getIsProgress());
 
-        document.setIsActive(d.getIsActive());
+        document.setActive(d.getActive());
     }
 
+//    public Object loginTracking(Document credential) throws Exception{
+//        Document document = documentRepo.findByEmail(credential.getEmail()).orElseThrow(()->
+//                new ResourceNotFoundException(ConstantMessage.WARNING_LOGIN_FAIL));
+//        if (document != null){
+//            if (document.get)
+//        }
+//    }
+
     public List<Document> findAllDocument(){return documentRepo.findAll();}
+
+    public List<Document> findDocumentProgress(String isProgress){
+
+        return documentRepo.findByIsProgress(isProgress);
+    }
+
+    public List<Document> findProgressForAdmin(){
+        return documentRepo.getProgressForAdmin();
+    }
+
+    public List<Document> findHitoriForAdmin(){
+        return documentRepo.getHistoriForAdmin();
+    }
 
 }
