@@ -43,6 +43,14 @@ public class DocumentService {
         document.setActive(d.getActive());
     }
 
+    public void catatanRevisi(Document d) throws Exception{
+        Document document = documentRepo.findById(d.getId()).orElseThrow(()->
+                new ResourceNotFoundException(ConstantMessage.WARNING_NOT_FOUND));
+
+        document.setPesan(d.getPesan());
+        document.setIsProgress("1b");
+    }
+
 //    public Object loginTracking(Document credential) throws Exception{
 //        Document document = documentRepo.findByEmail(credential.getEmail()).orElseThrow(()->
 //                new ResourceNotFoundException(ConstantMessage.WARNING_LOGIN_FAIL));

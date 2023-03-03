@@ -84,13 +84,11 @@ public class DocumentController {
                 generateResponse(ConstantMessage.SUCCESS_FIND_BY, HttpStatus.OK, lsDocument, null, null);
     }
 
-
     @GetMapping("/getProgress/{isProgress}")
     public ResponseEntity<Object> getDocProg(@PathVariable("isProgress")String isProgress)throws Exception{
         return new ResponseHandler().
                 generateResponse(ConstantMessage.SUCCESS_FIND_BY,HttpStatus.OK,documentService.findDocumentProgress(isProgress),null,null);
     }
-
 
     @GetMapping("/getDoc/{id}")
     public ResponseEntity<Object> getDocId(@PathVariable("id")long id) throws Exception{
@@ -113,8 +111,15 @@ public class DocumentController {
                 generateResponse(ConstantMessage.SUCCESS_FIND_BY, HttpStatus.OK,"",null,null);
     }
 
-    @GetMapping("/display/{id}/{kk:.+}")
-    public ResponseEntity<byte[]> getPdf(@PathVariable("kk")String kk,
+    @PutMapping("/revisi")
+    public ResponseEntity<Object> updatePesan(@RequestBody Document document) throws Exception{
+        documentService.catatanRevisi(document);
+        return new ResponseHandler().
+                generateResponse(ConstantMessage.SUCCESS_FIND_BY, HttpStatus.OK,"",null,null);
+    }
+
+    @GetMapping("/KK/{id}/{kk:.+}")
+    public ResponseEntity<byte[]> getKK(@PathVariable("kk")String kk,
                                          @PathVariable ("id")Long id) throws IOException {
 
         String filePath = "uploads/" +id +"/" +kk;
@@ -127,6 +132,162 @@ public class DocumentController {
         headers.setContentDisposition(ContentDisposition.builder("inline").filename(kk).build());
 
         return ResponseEntity.ok().headers(headers).body(bytes);
+    }
+
+    @GetMapping("/K1/{id}/{k1:.+}")
+    public ResponseEntity<byte[]> getFormK1(@PathVariable("k1")String k1,
+                                         @PathVariable ("id")Long id) throws IOException {
+
+        String filePath = "uploads/" +id +"/" +k1;
+        InputStream inputStream = new FileInputStream(new File(filePath));
+
+        byte[] bytes = IOUtils.toByteArray(inputStream);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDisposition(ContentDisposition.builder("inline").filename(k1).build());
+
+        return ResponseEntity.ok().headers(headers).body(bytes);
+    }
+
+    @GetMapping("/K2/{id}/{k2:.+}")
+    public ResponseEntity<byte[]> getFormK2(@PathVariable("k2")String k2,
+                                            @PathVariable ("id")Long id) throws IOException {
+
+        String filePath = "uploads/" +id +"/" +k2;
+        InputStream inputStream = new FileInputStream(new File(filePath));
+
+        byte[] bytes = IOUtils.toByteArray(inputStream);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDisposition(ContentDisposition.builder("inline").filename(k2).build());
+
+        return ResponseEntity.ok().headers(headers).body(bytes);
+    }
+
+    @GetMapping("/ktpKonsumen/{id}/{ktpKonsumen:.+}")
+    public ResponseEntity<byte[]> getFormKtpKonsumen(@PathVariable("ktpKonsumen")String ktpKonsumen,
+                                            @PathVariable ("id")Long id) throws IOException {
+
+        String filePath = "uploads/" +id +"/" +ktpKonsumen;
+        InputStream inputStream = new FileInputStream(new File(filePath));
+
+        byte[] bytes = IOUtils.toByteArray(inputStream);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDisposition(ContentDisposition.builder("inline").filename(ktpKonsumen).build());
+
+        return ResponseEntity.ok().headers(headers).body(bytes);
+    }
+
+    @GetMapping("/ktpPengaju/{id}/{ktpPengaju:.+}")
+    public ResponseEntity<byte[]> getFormKtpPengaju(@PathVariable("ktpPengaju")String ktpPengaju,
+                                                     @PathVariable ("id")Long id) throws IOException {
+
+        String filePath = "uploads/" +id +"/" +ktpPengaju;
+        InputStream inputStream = new FileInputStream(new File(filePath));
+
+        byte[] bytes = IOUtils.toByteArray(inputStream);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDisposition(ContentDisposition.builder("inline").filename(ktpPengaju).build());
+
+        return ResponseEntity.ok().headers(headers).body(bytes);
+    }
+
+    @GetMapping("/resumeMedis/{id}/{resumeMedis:.+}")
+    public ResponseEntity<byte[]> getResumeMedis(@PathVariable("resumeMedis")String resumeMedis,
+                                                    @PathVariable ("id")Long id) throws IOException {
+
+        String filePath = "uploads/" +id +"/" +resumeMedis;
+        InputStream inputStream = new FileInputStream(new File(filePath));
+
+        byte[] bytes = IOUtils.toByteArray(inputStream);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDisposition(ContentDisposition.builder("inline").filename(resumeMedis).build());
+
+        return ResponseEntity.ok().headers(headers).body(bytes);
+    }
+
+    @GetMapping("/sertifikatCP/{id}/{sertifikatCP:.+}")
+    public ResponseEntity<byte[]> getSertifikatCP(@PathVariable("sertifikatCP")String sertifikatCP,
+                                                 @PathVariable ("id")Long id) throws IOException {
+
+        String filePath = "uploads/" +id +"/" +sertifikatCP;
+        InputStream inputStream = new FileInputStream(new File(filePath));
+
+        byte[] bytes = IOUtils.toByteArray(inputStream);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDisposition(ContentDisposition.builder("inline").filename(sertifikatCP).build());
+
+        return ResponseEntity.ok().headers(headers).body(bytes);
+    }
+
+    @GetMapping("/skPolisi/{id}/{skPolisi:.+}")
+    public ResponseEntity<byte[]> getskPolisi(@PathVariable("skPolisi")String skPolisi,
+                                                  @PathVariable ("id")Long id) throws IOException {
+
+        String filePath = "uploads/" +id +"/" +skPolisi;
+        InputStream inputStream = new FileInputStream(new File(filePath));
+
+        byte[] bytes = IOUtils.toByteArray(inputStream);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDisposition(ContentDisposition.builder("inline").filename(skPolisi).build());
+
+        return ResponseEntity.ok().headers(headers).body(bytes);
+    }
+
+    @GetMapping("/skTidakKerja/{id}/{skTidakKerja:.+}")
+    public ResponseEntity<byte[]> getSkTidakKerja(@PathVariable("skTidakKerja")String skTidakKerja,
+                                                  @PathVariable ("id")Long id) throws IOException {
+
+        String filePath = "uploads/" +id +"/" +skTidakKerja;
+        InputStream inputStream = new FileInputStream(new File(filePath));
+
+        byte[] bytes = IOUtils.toByteArray(inputStream);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDisposition(ContentDisposition.builder("inline").filename(skTidakKerja).build());
+
+        return ResponseEntity.ok().headers(headers).body(bytes);
+    }
+
+    @PutMapping("/kirimPengajuan/{id}")
+    public ResponseEntity<Object> updateDocument(
+            @PathVariable("id")Long param1,
+            @RequestParam("pengantar")MultipartFile pengantar,
+            @RequestParam("loanLedger")MultipartFile loanLedger,
+            @RequestParam(value = "isProgress", defaultValue = "2")String param2
+    ) throws Exception{
+
+//        Document document = new Document();
+
+        String suratPengantar = StringUtils.cleanPath(pengantar.getOriginalFilename());
+        String dataLoanLedger = StringUtils.cleanPath(loanLedger.getOriginalFilename());
+
+        Document doc1 =  documentRepo.getById(param1);
+
+        doc1.setPengantar(suratPengantar);
+        doc1.setLoanLedger(dataLoanLedger);
+        doc1.setIsProgress(param2);
+        documentRepo.save(doc1);
+
+        String uploadDir = "uploads/" + doc1.getId();
+
+        FileUploadUtil.saveFile(uploadDir, suratPengantar, pengantar);
+        FileUploadUtil.saveFile(uploadDir, dataLoanLedger, loanLedger);
+
+        return new ResponseHandler().generateResponse(ConstantMessage.SUCCESS_SAVE, HttpStatus.CREATED, null, null, null);
     }
 
     @PostMapping("/upload")
