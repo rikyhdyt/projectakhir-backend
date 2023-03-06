@@ -12,6 +12,7 @@ import com.bcafinace.projectakhir.models.Document;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +20,11 @@ import java.util.Optional;
 public interface DocumentRepo extends JpaRepository<Document, Long> {
 
     List<Document>findByIsProgress(String isProgress);
+
+    @Query(value = "SELECT TbDocument.* FROM TbDocument JOIN TbAkun ON TbDocument.IdAkun=TbAkun.AkunId JOIN TbMaskapai  " +
+            "ON TbAkun.IdMaskapai=TbMaskapai.MasId WHERE TbMaskapai.MasId= :id AND TbDocument.IsProgress='2'", nativeQuery = true)
+    @Modifying
+    List<Document> getPengajuanForMaskapai(@Param("id")Long id);
 
     @Query(value = "SELECT * FROM TbDocument WHERE IsProgress = '2' OR IsProgress ='2b' OR IsProgress='1b'", nativeQuery = true)
     @Modifying

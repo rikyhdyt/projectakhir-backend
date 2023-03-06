@@ -8,6 +8,22 @@ Created on 20/01/2023
 Version 1.0
 */
 
-public interface MaskapaiRepo {
+import com.bcafinace.projectakhir.models.Document;
+import com.bcafinace.projectakhir.models.Maskapai;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+import java.util.Optional;
+
+public interface MaskapaiRepo extends JpaRepository<Maskapai, Long> {
+
+//    @Query(value = "SELECT TbDocument.* FROM TbDocument JOIN TbAkun ON TbDocument.IdAkun=TbAkun.AkunId JOIN TbMaskapai  " +
+//            "ON TbAkun.IdMaskapai=TbMaskapai.MasId WHERE TbMaskapai.MasId= :id AND TbDocument.IsProgress='2'", nativeQuery = true)
+//    @Modifying
+//    List<Document> getPengajuanForMaskapai(@Param("id")Long id);
+
+    Optional<Maskapai> findByUsername(String username);
 }

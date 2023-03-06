@@ -24,6 +24,7 @@ public class ConstantMessage {
     /*Global*/
     public final static String SUCCESS_SAVE = "DATA BERHASIL DIBUAT";
     public final static String SUCCESS_FIND_BY = "OK";
+    public final static String SUCCESS_LOGIN = "LOGIN BERHASIL";
     public final static String WARNING_NOT_FOUND = "DATA TIDAK DITEMUKAN";
     public final static String WARNING_LOGIN_FAIL = "LOGIN GAGAL";
     public final static String WARNING_DATA_EMPTY = "DATA TIDAK ADA";
@@ -39,63 +40,6 @@ public class ConstantMessage {
     public final static String ERROR_UNPROCCESSABLE = "Validation error. Check 'errors' field for details.";
 
     public final static String ERROR_NO_CONTENT = "PERMINTAAN TIDAK DAPAT DIPROSES";
-    public final static String WELCOME_MESSAGE = "This is Springboot BootCamp BCAF BATCH 1";
-    public final static String TAKE_TOUR = "Ready To Start";
 
-    /*Customer*/
-    public final static String SUCCESS = "";
-    public final static String ERROR = "";
-    public final static String WARNING_EMAIL_EXIST = "EMAIL SUDAH TERDAFTAR";
-    public final static String WARNING_CUSTOMER_NOT_FOUND = "CUSTOMER BELUM TERDAFTAR";
-
-    /*Products*/
-    public final static String WARNING_PRODUCT_NOT_FOUND = "PRODUK TIDAK DITEMUKAN";
-    public final static String WARNING_PRODUCT_PRICE_SOP = "HARGA TIDAK BOLEH 1/2 ATAU 3 KALI DARI HARGA SEBELUMNYA";
-
-    /*Cars*/
-    public final static String WARNING_NUM_EXIST = "NOMOR POLISI SUDAH TERDAFTAR";
-    public final static String WARNING_CAR_NOT_FOUND = "MOBIL BELUM TERDAFTAR";
-    public final static String WARNING_CARNUM_NAME_MANDATORY = "NOMOR POLISI WAJIB DIISI";
-    public final static String WARNING_CARTYPE_MANDATORY = "TIPE MOBIL WAJIB DIISI";
-    public final static String WARNING_CARBRAND_MANDATORY = "MEREK MOBIL WAJIB DIISI";
-    public final static String WARNING_CARCOLOR_MANDATORY = "WARNA MOBIL WAJIB DIISI";
-    public final static String WARNING_CARYEAR_MANDATORY = "TAHUN MOBIL WAJIB DIISI";
-
-
-    //regis
-    public final static String SUCCESS_SEND_EMAIL = "SILAHKAN CEK EMAIL YANG TELAH ANDA DAFTARKAN";
-
-    public final static String WARNING_EMAIL_NOT_FOUND = "OTENTIFIKASI GAGAL";
-    public final static String SUCCESS_FIND_TOKEN = "EMAIL VALID";
-
-    //category
-    public final static String WARNING_CAT_NAME_MANDATORY = "NAMA CATEGORY WAJIB DIISI";
-    public final static String WARNING_NAME_MAX_LENGTH = "MAKSIMAL NAMA 25 KARAKTER";
-
-    public final static String WARNING_DESC_NAME_MANDATORY = "NAMA DESKRIPSI WAJIB DIISI";
-    public final static String WARNING_DESC_MAX_LENGTH = "MAKSIMAL DESKRIPSI 50 KARAKTER";
-
-    //csv
-    public final static String CONTENT_TYPE_CSV = "text/csv";
-    public final static String ERROR_NOT_CSV_FILE = "FORMAT FILE HARUS CSV ";
-    public final static String ERROR_UPLOAD_CSV = "UPLOAD FILE GAGAL ";
-
-    //rent
-    public final static String WARNING_DATA_MANDATORY = "SEMUA DATA WAJIB DIISI";
-    public final static String WARNING_DATA_MAX_LENGTH = "DATA TERLALU PANJANG";
-
-    //rekening
-    public final static String WARNING_REK_EXIST = "REKENING SUDAH TERDAFTAR";
-    public final static String WARNING_REK_SUMBER_NOT_EXIST = "REKENING SUMBER TIDAK TERDAFTAR";
-    public final static String SUCCESS_CEK_BY = "SALDO MENCUKUPI";
-    public final static String WARNING_CEK_FAILED = "SALDO TIDAK MENCUKUPI";
-    public final static String WARNING_REK_PENERIMA_NOT_EXIST = "REKENING PENERIMA TIDAK TERDAFTAR";
-    public final static String WARNING_FAIL_TRANSACTION = "TRANSAKSI GAGAL";
-    public final static String SUCCESS_TRANSFER = "TRANSFER BERHASIL";
-
-    //ujian
-    public final static String ERROR_TIDAK_BOLEH_KOSONG_VAR_1 = "VAR 1 HARUS DIISI";
-    public final static String ERROR_TIDAK_BOLEH_KOSONG_VAR_2 = "VAR 2 HARUS DIISI";
-    public final static String ERROR_TIDAK_BOLEH_KOSONG_VAR_3 = "VAR 3 HARUS DIISI";
 
 }
