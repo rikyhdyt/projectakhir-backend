@@ -30,8 +30,17 @@ public class MaskapaiService {
     this.documentRepo=documentRepo;}
 
 
-    public List<Document> getForMaskapai(Long id){
-        return documentRepo.getPengajuanForMaskapai(id);
+    public List<Document> getForMaskapai(String username){
+        return documentRepo.getPengajuanForMaskapai(username);
+    }
+
+    public List<Document> getRevisi(String username){
+        return documentRepo.getRevisiForMaskapai(username);
+    }
+
+    public Maskapai findByUser(String username) throws Exception{
+        return maskapaiRepo.findByUsername(username).
+                orElseThrow(() -> new ResourceNotFoundException(ConstantMessage.WARNING_NOT_FOUND));
     }
 
     public Object maskapaiLogin(Maskapai credential) throws Exception{

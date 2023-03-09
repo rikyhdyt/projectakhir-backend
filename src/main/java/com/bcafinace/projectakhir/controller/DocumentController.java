@@ -262,6 +262,38 @@ public class DocumentController {
         return ResponseEntity.ok().headers(headers).body(bytes);
     }
 
+    @GetMapping("/suratPengantar/{id}/{pengantar:.+}")
+    public ResponseEntity<byte[]> getSuratPengantar(@PathVariable("pengantar")String pengantar,
+                                                  @PathVariable ("id")Long id) throws IOException {
+
+        String filePath = "uploads/" +id +"/" +pengantar;
+        InputStream inputStream = new FileInputStream(new File(filePath));
+
+        byte[] bytes = IOUtils.toByteArray(inputStream);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDisposition(ContentDisposition.builder("inline").filename(pengantar).build());
+
+        return ResponseEntity.ok().headers(headers).body(bytes);
+    }
+
+    @GetMapping("/loanLedger/{id}/{loanLedger:.+}")
+    public ResponseEntity<byte[]> getDataLoan(@PathVariable("loanLedger")String loanLedger,
+                                                    @PathVariable ("id")Long id) throws IOException {
+
+        String filePath = "uploads/" +id +"/" +loanLedger;
+        InputStream inputStream = new FileInputStream(new File(filePath));
+
+        byte[] bytes = IOUtils.toByteArray(inputStream);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDisposition(ContentDisposition.builder("inline").filename(loanLedger).build());
+
+        return ResponseEntity.ok().headers(headers).body(bytes);
+    }
+
     @PutMapping("/kirimPengajuan/{id}")
     public ResponseEntity<Object> updateDocument(
             @PathVariable("id")Long param1,

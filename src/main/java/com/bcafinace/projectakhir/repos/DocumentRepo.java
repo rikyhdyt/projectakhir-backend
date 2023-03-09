@@ -22,9 +22,14 @@ public interface DocumentRepo extends JpaRepository<Document, Long> {
     List<Document>findByIsProgress(String isProgress);
 
     @Query(value = "SELECT TbDocument.* FROM TbDocument JOIN TbAkun ON TbDocument.IdAkun=TbAkun.AkunId JOIN TbMaskapai  " +
-            "ON TbAkun.IdMaskapai=TbMaskapai.MasId WHERE TbMaskapai.MasId= :id AND TbDocument.IsProgress='2'", nativeQuery = true)
+            "ON TbAkun.IdMaskapai=TbMaskapai.MasId WHERE TbMaskapai.MasUsername= :username AND TbDocument.IsProgress='2'", nativeQuery = true)
     @Modifying
-    List<Document> getPengajuanForMaskapai(@Param("id")Long id);
+    List<Document> getPengajuanForMaskapai(@Param("username")String username);
+
+    @Query(value = "SELECT TbDocument.* FROM TbDocument JOIN TbAkun ON TbDocument.IdAkun=TbAkun.AkunId JOIN TbMaskapai  " +
+            "ON TbAkun.IdMaskapai=TbMaskapai.MasId WHERE TbMaskapai.MasUsername= :username AND TbDocument.IsProgress='2b'", nativeQuery = true)
+    @Modifying
+    List<Document> getRevisiForMaskapai(@Param("username")String username);
 
     @Query(value = "SELECT * FROM TbDocument WHERE IsProgress = '2' OR IsProgress ='2b' OR IsProgress='1b'", nativeQuery = true)
     @Modifying

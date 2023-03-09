@@ -62,6 +62,9 @@ public class Document {
     @Column(name = "SertifikatCP", nullable = true)
     private String sertifikatCP;
 
+    @Column(name = "TglKeputusan", nullable = true)
+    private Date tglKeputusan;
+
     //optional dokumen
     @Column(name = "SKPolisi", nullable = true)
     private String skPolisi;
@@ -87,6 +90,9 @@ public class Document {
     //default
     @Column(name = "IsProgress",nullable = false)
     private String isProgress="1";
+
+    @Column(name = "TglTerima", nullable = true)
+    private Date tglTerima=new Date();
 
     @Column(name = "IsActive",nullable = false)
     private Boolean isActive=true;
@@ -261,5 +267,21 @@ public class Document {
 
     public void setNoKlaim(String noKlaim) {
         this.noKlaim = noKlaim;
+    }
+
+    public Date getTglKeputusan() {
+        return tglKeputusan;
+    }
+
+    public void setTglKeputusan(Date tglKeputusan) {
+        this.tglKeputusan = tglKeputusan;
+    }
+
+    public Date getTglTerima() {
+        return tglTerima;
+    }
+
+    public void setTglTerima(Date tglTerima) {
+        this.tglTerima = tglTerima;
     }
 }

@@ -20,10 +20,5 @@ import java.util.Optional;
 
 public interface MaskapaiRepo extends JpaRepository<Maskapai, Long> {
 
-//    @Query(value = "SELECT TbDocument.* FROM TbDocument JOIN TbAkun ON TbDocument.IdAkun=TbAkun.AkunId JOIN TbMaskapai  " +
-//            "ON TbAkun.IdMaskapai=TbMaskapai.MasId WHERE TbMaskapai.MasId= :id AND TbDocument.IsProgress='2'", nativeQuery = true)
-//    @Modifying
-//    List<Document> getPengajuanForMaskapai(@Param("id")Long id);
-
     Optional<Maskapai> findByUsername(String username);
 }

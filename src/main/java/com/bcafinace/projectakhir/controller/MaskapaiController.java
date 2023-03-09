@@ -10,6 +10,7 @@ Version 1.0
 
 import com.bcafinace.projectakhir.handler.ResourceNotFoundException;
 import com.bcafinace.projectakhir.handler.ResponseHandler;
+import com.bcafinace.projectakhir.models.Document;
 import com.bcafinace.projectakhir.models.Maskapai;
 import com.bcafinace.projectakhir.service.MaskapaiService;
 import com.bcafinace.projectakhir.utils.ConstantMessage;
@@ -39,10 +40,30 @@ public class MaskapaiController {
     @Autowired
     public MaskapaiController(MaskapaiService maskapaiService){this.maskapaiService=maskapaiService;}
 
-    @GetMapping("/getDataPengajuan/{id}")
-    public ResponseEntity<Object> getData(@PathVariable("id")Long id)throws Exception{
+    @GetMapping("/getDataPengajuan/{username}")
+    public ResponseEntity<Object> getData(@PathVariable("username")String username)throws Exception{
         return new ResponseHandler().
-                generateResponse(ConstantMessage.SUCCESS_FIND_BY, HttpStatus.OK,maskapaiService.getForMaskapai(id),null,null);
+                generateResponse(ConstantMessage.SUCCESS_FIND_BY, HttpStatus.OK,maskapaiService.getForMaskapai(username),null,null);
+    }
+
+    @GetMapping("/getDataRevisi/{username}")
+    public ResponseEntity<Object> getDataRevisi(@PathVariable("username")String username)throws Exception{
+        return new ResponseHandler().
+                generateResponse(ConstantMessage.SUCCESS_FIND_BY, HttpStatus.OK,maskapaiService.getRevisi(username),null,null);
+    }
+
+    @GetMapping("/getUser/{username}")
+    public ResponseEntity<Object> getUserData(@PathVariable("username")String username) throws Exception{
+
+        Maskapai maskapai = maskapaiService.findByUser(username);
+
+        if (maskapai != null) {
+            return new ResponseHandler().
+                    generateResponse(ConstantMessage.SUCCESS_FIND_BY, HttpStatus.OK, maskapai, null, null);
+
+        } else {
+            throw new ResourceNotFoundException(ConstantMessage.WARNING_NOT_FOUND);
+        }
     }
 
     @PostMapping("/maskapaiLogin")
