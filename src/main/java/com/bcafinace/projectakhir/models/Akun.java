@@ -48,6 +48,9 @@ public class Akun {
     @Column(name = "IsActive")
     private boolean isActive=true;
 
+    @Column(name = "IsAjukanCp")
+    private boolean isAjukanCp=false;
+
     @ManyToOne
     @JoinColumn(name = "IdMaskapai")
     private Maskapai maskapai;
@@ -58,6 +61,14 @@ public class Akun {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public boolean isAjukanCp() {
+        return isAjukanCp;
+    }
+
+    public void setAjukanCp(boolean ajukanCp) {
+        isAjukanCp = ajukanCp;
     }
 
     public String getNmKonsumen() {

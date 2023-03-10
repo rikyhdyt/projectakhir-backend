@@ -17,4 +17,6 @@ public interface AkunRepo extends JpaRepository<Akun, Long> {
 
     Optional<Akun> findByNoKontrakAndNoPolis(String noKontrak, String noPolis);
 
+    Optional<Akun> findByNoKontrak(String noKontrak);
+
 }

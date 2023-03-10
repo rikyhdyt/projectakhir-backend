@@ -39,6 +39,10 @@ public interface DocumentRepo extends JpaRepository<Document, Long> {
     @Modifying
     List<Document> getHistoriForAdmin();
 
+    @Query(value = "SELECT * FROM TbDocument JOIN TbAkun ON TbDocument.IdAkun=TbAkun.AkunId WHERE TbAkun.NoKontrak=:noKontrak", nativeQuery = true)
+    @Modifying
+    List<Document> getDataTracking(@Param("noKontrak")String noKontrak);
+
     @Override
     Optional<Document> findById(Long id);
 

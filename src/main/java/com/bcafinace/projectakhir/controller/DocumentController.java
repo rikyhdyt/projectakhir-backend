@@ -152,7 +152,7 @@ public class DocumentController {
 
     @GetMapping("/K2/{id}/{k2:.+}")
     public ResponseEntity<byte[]> getFormK2(@PathVariable("k2")String k2,
-                                            @PathVariable ("id")Long id) throws IOException {
+                                            @PathVariable("id")Long id) throws IOException {
 
         String filePath = "uploads/" +id +"/" +k2;
         InputStream inputStream = new FileInputStream(new File(filePath));
